@@ -3,6 +3,7 @@ package com.example.dayswithoutbadhabits
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val textView = findViewById<TextView>(R.id.mainTextView)
+        val button = findViewById<Button>(R.id.resetButton)
 
         val sharedPref = getSharedPreferences("main", Context.MODE_PRIVATE)
         val time = sharedPref.getLong("time", -1)
@@ -22,7 +24,11 @@ class MainActivity : AppCompatActivity() {
             val difference = (System.currentTimeMillis() - time) /1000
             val days = difference / (24*3600)
             textView.text = days.toString()
+        }
 
+        button.setOnClickListener{
+            sharedPref.edit().putLong("time", System.currentTimeMillis()).apply()
+            textView.text = "0"
         }
     }
 }

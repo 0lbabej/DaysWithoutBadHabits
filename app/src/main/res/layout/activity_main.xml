@@ -23,6 +23,14 @@
         android:text="@string/subtitle"
         android:textSize="22sp"/>
 
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/resetButton"
+        android:text="@string/reset"
+        android:textSize="18sp"
+        android:layout_width="100dp"
+        android:layout_height="60dp" />
+
 
 
 </LinearLayout>
